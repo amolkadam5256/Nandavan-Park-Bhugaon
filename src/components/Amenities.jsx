@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import images from "../assets/image";
 import {
   Building2,
   Car,
@@ -10,21 +9,34 @@ import {
   Users,
   Wind,
   Flame,
-  TreePine,
-  Camera,
   Wifi,
   MapPin,
 } from "lucide-react";
-import images from "../assets/image";
 
 const Amenities = () => {
-  // Initialize AOS with infinite animation on scroll
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false, // Allow animations to repeat
-      mirror: true, // Animate elements when scrolling past them
-    });
+    // Initialize AOS
+    const initAOS = async () => {
+      const AOS = await import(
+        "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      );
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+      });
+    };
+    initAOS();
+
+    // Load AOS CSS
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css";
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
   }, []);
 
   const amenities = [
@@ -81,7 +93,6 @@ const Amenities = () => {
       description: "Complete fire safety systems installed",
       bgImage: images.firesafety,
     },
-
     {
       icon: <Wifi className="w-8 h-8 lg:w-10 lg:h-10" />,
       title: "Internet Ready",
@@ -98,7 +109,7 @@ const Amenities = () => {
   ];
 
   return (
-    <section className="py-12 lg:py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-12 lg:py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16 relative">
@@ -107,20 +118,20 @@ const Amenities = () => {
             data-aos="fade-up"
             data-aos-delay="0"
           >
-            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 whitespace-nowrap">
+            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 dark:text-white/20 whitespace-nowrap">
               Premium Amenities
             </span>
           </div>
           <div className="relative z-10">
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
               data-aos="fade-down"
               data-aos-delay="100"
             >
               Premium Amenities
             </h2>
             <p
-              className="text-base sm:text-lg text-gray-600"
+              className="text-base sm:text-lg text-gray-600 dark:text-white/80"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -134,7 +145,7 @@ const Amenities = () => {
           {amenities.map((amenity, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+              className="group relative bg-white dark:bg-white/10 rounded-xl p-6 lg:p-8 shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 dark:hover:shadow-blue-500/20 transition-all duration-500 text-center transform hover:-translate-y-2 border border-gray-100 dark:border-white/10 overflow-hidden"
               data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
               data-aos-delay={index * 100}
             >
@@ -151,17 +162,17 @@ const Amenities = () => {
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon Container */}
-                <div className="inline-flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 bg-blue-100 group-hover:bg-white/20 group-hover:backdrop-blur-sm text-blue-600 group-hover:text-white mb-4 lg:mb-6 rounded-full transition-all duration-500 group-hover:scale-110 border-2 border-transparent group-hover:border-white/30">
+                <div className="inline-flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 bg-blue-100 dark:bg-blue-500/20 group-hover:bg-white/20 group-hover:backdrop-blur-sm text-blue-600 dark:text-blue-400 group-hover:text-white mb-4 lg:mb-6 rounded-full transition-all duration-500 group-hover:scale-110 border-2 border-transparent group-hover:border-white/30">
                   {amenity.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-white mb-2 lg:mb-3 transition-colors duration-500">
+                <h3 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-2 lg:mb-3 transition-colors duration-500">
                   {amenity.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm lg:text-base text-gray-600 group-hover:text-white/90 transition-colors duration-500">
+                <p className="text-sm lg:text-base text-gray-600 dark:text-white/70 group-hover:text-white/90 transition-colors duration-500">
                   {amenity.description}
                 </p>
 

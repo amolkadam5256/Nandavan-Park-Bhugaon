@@ -1,5 +1,6 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useTheme } from "../contexts/ThemeContext"; // ← ADD THIS
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import ProjectOverview from "./components/ProjectOverview";
@@ -8,13 +9,21 @@ import Amenities from "./components/Amenities";
 import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import DarkModeToggle from "./components/DarkModeToggle";
 import "./App.css";
 
 const App = () => {
+  const { isDark, toggleDarkMode } = useTheme(); // ← USE THEME HOOK
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Navigation */}
       <Navigation />
+
+      {/* Dark Mode Toggle - Fixed Position */}
+      <div className="fixed top-1/2 right-0 z-50 transform -translate-y-1/2">
+        <DarkModeToggle isDark={isDark} toggleDarkMode={toggleDarkMode} />
+      </div>
 
       {/* Hero Section */}
       <Hero />
@@ -48,66 +57,6 @@ const App = () => {
       >
         <FaWhatsapp className="w-7 h-7 lg:w-8 lg:h-8 text-white fill-white" />
       </a>
-
-      {/* Global Styles */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-        
-        :root {
-          --color-primary: #2262B2;
-          --color-primary-dark-1: #1B4F91;
-          --color-primary-dark-2: #153E72;
-          --color-primary-light-1: #4D82C6;
-          --color-primary-light-2: #7FA6D9;
-          --color-primary-lightest: #D6E4F5;
-          --color-neutral: #979DA6;
-          --color-dark: #0A0A0A;
-          --color-white: #FFFFFF;
-        }
-
-        body {
-          font-family: 'Montserrat', sans-serif;
-          margin: 0;
-          padding: 0;
-        }
-
-        * {
-          scroll-behavior: smooth;
-          box-sizing: border-box;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* Scroll Animation Styles */
-        .scroll-animate {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .scroll-animate.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .scroll-animate-delay-1 {
-          transition-delay: 0.1s;
-        }
-
-        .scroll-animate-delay-2 {
-          transition-delay: 0.2s;
-        }
-
-        .scroll-animate-delay-3 {
-          transition-delay: 0.3s;
-        }
-
-        .scroll-animate-delay-4 {
-          transition-delay: 0.4s;
-        }
-      `}</style>
     </div>
   );
 };

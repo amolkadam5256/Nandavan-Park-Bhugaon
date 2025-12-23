@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import images from "../assets/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
+    // Initialize AOS
+    const initAOS = async () => {
+      const AOS = await import(
+        "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      );
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+      });
+    };
+    initAOS();
+
+    // Load AOS CSS
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css";
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
   }, []);
 
   const galleryImages = [
@@ -96,20 +110,20 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-black dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 relative" data-aos="fade-up">
-          <div className="absolute inset-0 -top-40  flex items-center justify-center pointer-events-none overflow-hidden">
-            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 whitespace-nowrap">
+          <div className="absolute inset-0 -top-40 flex items-center justify-center pointer-events-none overflow-hidden">
+            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 dark:text-white/20 whitespace-nowrap">
               Project Gallery
             </span>
           </div>
           <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Project Gallery
             </h2>
-            <p className="text-base sm:text-lg text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-white/80">
               Explore our premium commercial spaces
             </p>
           </div>
@@ -124,7 +138,7 @@ const Gallery = () => {
               data-aos-delay={index * 100}
               className={`${getSpanClasses(
                 index
-              )} group relative overflow-hidden cursor-pointer rounded-md sm:rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:z-10`}
+              )} group relative overflow-hidden cursor-pointer rounded-md sm:rounded-lg shadow-md hover:shadow-2xl dark:shadow-gray-900/50 dark:hover:shadow-blue-500/20 transition-all duration-500 hover:scale-[1.02] hover:z-10`}
               onClick={() => openLightbox(index)}
             >
               {/* Image */}
@@ -135,7 +149,7 @@ const Gallery = () => {
               />
 
               {/* Color Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 via-purple-600/0 to-pink-600/30 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 via-purple-600/0 to-pink-600/30 dark:from-blue-500/0 dark:via-purple-500/0 dark:to-pink-500/40 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
               {/* Text Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -159,11 +173,11 @@ const Gallery = () => {
 
       {/* Lightbox */}
       {lightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 sm:p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-black/95 dark:bg-black/98 flex items-center justify-center p-2 sm:p-4 animate-fade-in">
           {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors z-10"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 dark:hover:bg-white/20 rounded-lg transition-colors z-10"
             aria-label="Close lightbox"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
@@ -172,7 +186,7 @@ const Gallery = () => {
           {/* Previous Button */}
           <button
             onClick={prevImage}
-            className="absolute left-2 sm:left-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="absolute left-2 sm:left-4 text-white p-1.5 sm:p-2 hover:bg-white/10 dark:hover:bg-white/20 rounded-lg transition-colors"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
@@ -189,7 +203,7 @@ const Gallery = () => {
               <p className="text-white text-xs sm:text-sm lg:text-base font-semibold">
                 {galleryImages[currentImageIndex].alt}
               </p>
-              <p className="text-white/60 text-[10px] sm:text-xs lg:text-sm mt-1">
+              <p className="text-white/60 dark:text-white/50 text-[10px] sm:text-xs lg:text-sm mt-1">
                 {currentImageIndex + 1} / {galleryImages.length}
               </p>
             </div>
@@ -198,7 +212,7 @@ const Gallery = () => {
           {/* Next Button */}
           <button
             onClick={nextImage}
-            className="absolute right-2 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="absolute right-2 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 dark:hover:bg-white/20 rounded-lg transition-colors"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />

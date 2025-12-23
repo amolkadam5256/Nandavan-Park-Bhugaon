@@ -7,7 +7,7 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="relative top-0 left-0 right-0 bg-white shadow-lg z-50">
+    <nav className="relative top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 lg:h-18">
           {/* Logo */}
@@ -24,14 +24,14 @@ const Navigation = () => {
             {/* Phone Number */}
             <a
               href="tel:+919752971177"
-              className="flex items-center space-x-1 text-black hover:text-gray-600 transition-colors"
+              className="flex items-center space-x-1 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               <Phone className="w-4 h-4" />
               <span className="text-sm font-semibold">+91 97529 71177</span>
             </a>
 
             {/* RERA Number */}
-            <div className="text-black hover:text-gray-600 text-sm">
+            <div className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 text-sm">
               <span className="font-semibold">MAHA RERA NO: A061262500523</span>
             </div>
           </div>
@@ -39,12 +39,12 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-300"
+            className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-black" />
+              <X className="w-6 h-6 text-black dark:text-white" />
             ) : (
-              <Menu className="w-6 h-6 text-black" />
+              <Menu className="w-6 h-6 text-black dark:text-white" />
             )}
           </button>
         </div>
