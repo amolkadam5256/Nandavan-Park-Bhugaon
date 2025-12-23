@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import DarkModeToggle from "./components/DarkModeToggle";
 import "./App.css";
+// import SnowfallComponent from "./components/SnowfallComponent";
 
 const App = () => {
   const { isDark, toggleDarkMode } = useTheme(); // ← USE THEME HOOK
@@ -19,7 +20,7 @@ const App = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Navigation */}
       <Navigation />
-
+      {/* <SnowfallComponent /> */}
       {/* Dark Mode Toggle - Fixed Position */}
       <div className="fixed top-1/2 right-0 z-50 transform -translate-y-1/2">
         <DarkModeToggle isDark={isDark} toggleDarkMode={toggleDarkMode} />
