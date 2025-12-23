@@ -149,15 +149,42 @@ const Amenities = () => {
               data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
               data-aos-delay={index * 100}
             >
-              {/* Background Image with Overlay */}
+              {/* Background Image - Blurs on hover */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 
+                         opacity-100 
+                         transition-all duration-700 
+                         group-hover:blur-sm 
+                         group-hover:scale-110"
                 style={{
                   backgroundImage: `url(${amenity.bgImage})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               ></div>
+
+              {/* Glass Effect Overlay - Appears on hover */}
+              <div
+                className="absolute inset-0 
+                            opacity-0 
+                            group-hover:opacity-100 
+                            transition-all duration-700 
+                            backdrop-blur-xl 
+                            bg-white/20 
+                            dark:bg-black/30 
+                            backdrop-saturate-150 
+                            border border-white/20"
+              >
+                {/* Animated shine effect */}
+                <div
+                  className="absolute inset-0 
+                              bg-gradient-to-br 
+                              from-white/30 via-transparent to-transparent 
+                              translate-x-[-100%] translate-y-[-100%]
+                              group-hover:translate-x-0 group-hover:translate-y-0
+                              transition-transform duration-1000 ease-out"
+                ></div>
+              </div>
 
               {/* Content */}
               <div className="relative z-10">
@@ -167,12 +194,12 @@ const Amenities = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white group-hover:text-white mb-2 lg:mb-3 transition-colors duration-500">
+                <h3 className="text-lg lg:text-xl font-bold text-white dark:text-gray-200 group-hover:text-white mb-2 lg:mb-3 transition-colors duration-500">
                   {amenity.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm lg:text-base text-gray-600 dark:text-white/70 group-hover:text-white/90 transition-colors duration-500">
+                <p className="text-sm lg:text-base text-white dark:text-white/70 group-hover:text-white/90 transition-colors duration-500">
                   {amenity.description}
                 </p>
 
