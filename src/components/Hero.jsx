@@ -1,19 +1,19 @@
-import React from "react";
-import bgVideo from "../assets/bgVideo.mp4";
-import images from "../assets/image";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
+  // Initialize AOS with infinite animation on scroll
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false, // Allow animations to repeat
+      mirror: true, // Animate elements when scrolling past them
+    });
+  }, []);
+
   // Toggle between image and video
-  // Set to false to show image with text
-  // Set to true to show video
   const useVideo = true;
-
-  // Video source
-  const videoSource = bgVideo;
-
-  // Image source
-  const imageSource =
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200";
 
   const highlights = [
     { value: "144-340", label: "Sq.ft. Shops" },
@@ -36,7 +36,10 @@ const Hero = () => {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source src={images.bgVideo} type="video/mp4" />
+              <source
+                src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-modern-city-with-skyscrapers-50649-large.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-600/50"></div>
@@ -45,7 +48,7 @@ const Hero = () => {
           // Image Background with Overlay
           <>
             <img
-              src={images.bg}
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200"
               alt="Commercial Property"
               className="w-full h-full object-cover"
             />
@@ -56,21 +59,37 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-10 text-center">
-        <div className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2  text-xs sm:text-sm font-semibold mb-6 animate-pulse">
+        <div
+          className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 text-xs sm:text-sm font-semibold mb-6 animate-pulse"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           READY TO MOVE | COMMERCIAL PROPERTY
         </div>
 
-        <h1 className="text-4xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 lg:mb-6 leading-tight">
+        <h1
+          className="text-4xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 lg:mb-6 leading-tight"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Your Next Business
           <br />
           <span className="text-yellow-400">Address</span>
         </h1>
 
-        <p className="text-sm sm:text-xl lg:text-xl text-white/90 mb-4 max-w-3xl mx-auto">
+        <p
+          className="text-sm sm:text-xl lg:text-xl text-white/90 mb-4 max-w-3xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           Prime Commercial Spaces Crafted for Ambitious Brands
         </p>
 
-        <p className="text-base sm:text-sm text-white/80 mb-8 lg:mb-12 max-w-2xl mx-auto">
+        <p
+          className="text-base sm:text-sm text-white/80 mb-8 lg:mb-12 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
           A Business Address That Attracts Success in Bhugaon, Pune
         </p>
 
@@ -79,7 +98,9 @@ const Hero = () => {
           {highlights.map((item, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-md  p-4 lg:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+              className="bg-white/10 backdrop-blur-md p-4 lg:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+              data-aos="zoom-in"
+              data-aos-delay={500 + index * 100}
             >
               <div className="text-2xl lg:text-2xl font-bold text-yellow-400 mb-2">
                 {item.value}
@@ -92,16 +113,20 @@ const Hero = () => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          data-aos="fade-up"
+          data-aos-delay="000"
+        >
           <a
             href="tel:+918830567738"
-            className="w-full sm:w-auto bg-yellow-400 text-blue-900 px-8 py-4  font-bold text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 shadow-xl"
+            className="w-full sm:w-auto bg-yellow-400 text-blue-900 px-8 py-4 font-bold text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
             Call: +91 88305 67738
           </a>
           <a
             href="https://wa.me/918830567738"
-            className="w-full sm:w-auto bg-white/20 backdrop-blur-md text-white px-8 py-4  font-bold text-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto bg-white/20 backdrop-blur-md text-white px-8 py-4 font-bold text-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105"
           >
             WhatsApp Us
           </a>

@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CheckCircle, Shield } from "lucide-react";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import images from "../assets/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const WhyChoose = () => {
-  useScrollAnimation();
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   const reasons = [
     "Prime location in Bhugaon with excellent connectivity",
     "High footfall zone ensuring maximum business visibility",
@@ -28,7 +36,7 @@ const WhyChoose = () => {
   return (
     <section className="py-12 lg:py-20 bg-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 lg:mb-16 scroll-animate">
+        <div className="text-center mb-12 lg:mb-16" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Why Choose Nandavan Park?
           </h2>
@@ -38,18 +46,21 @@ const WhyChoose = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className={`flex items-start space-x-4 bg-white  p-4 lg:p-6 shadow-md hover:shadow-xl transition-all duration-300 scroll-animate scroll-animate-delay-${
-                (index % 4) + 1
-              }`}
+              data-aos="fade-right"
+              data-aos-delay={index * 100}
+              className="flex items-start space-x-4 bg-white p-4 lg:p-6 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <CheckCircle className="w-6 h-6 text-[var(--color-primary)] flex-shrink-0 mt-1" />
               <p className="text-sm lg:text-base text-gray-700">{reason}</p>
             </div>
           ))}
         </div>
 
         {/* Perfect For Section */}
-        <div className="bg-white  p-6 lg:p-12 shadow-xl mb-8 lg:mb-12 scroll-animate">
+        <div
+          className="bg-white p-6 lg:p-12 shadow-xl mb-8 lg:mb-12"
+          data-aos="zoom-in"
+        >
           <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-6 lg:mb-8">
             Perfect For
           </h3>
@@ -57,7 +68,9 @@ const WhyChoose = () => {
             {perfectFor.map((business, index) => (
               <div
                 key={index}
-                className="bg-blue-50  p-4 lg:p-6 text-center hover:bg-blue-100 transition-colors duration-300"
+                data-aos="flip-up"
+                data-aos-delay={index * 100}
+                className="bg-blue-50 p-4 lg:p-6 text-center hover:bg-blue-100 transition-colors duration-300"
               >
                 <p className="text-sm lg:text-base font-semibold text-gray-900">
                   {business}
@@ -68,13 +81,15 @@ const WhyChoose = () => {
         </div>
 
         {/* RERA Badge */}
-        <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 p-8 lg:p-16 text-center text-white shadow-2xl scroll-animate overflow-hidden">
+        <div
+          className="relative bg-blue-900/60 backdrop-blur-sm p-8 lg:p-16 text-center text-white shadow-2xl overflow-hidden backdrop-blur-md"
+          data-aos="fade-up"
+        >
           {/* Background Image Overlay */}
           <div
             className="absolute inset-0 opacity-10 bg-cover bg-center"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200')",
+              backgroundImage: `url(${images.img3})`,
             }}
           ></div>
 
@@ -100,7 +115,7 @@ const WhyChoose = () => {
               RERA Registered
             </h3>
 
-            <div className="inline-block bg-white/20 backdrop-blur-md  px-6 py-3 mb-4 border border-white/30">
+            <div className="inline-block bg-white/20 backdrop-blur-md px-6 py-3 mb-4 border border-white/30">
               <p className="text-sm lg:text-sm font-semibold tracking-wide">
                 MahaRERA No: A061262500523
               </p>

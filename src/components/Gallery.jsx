@@ -1,38 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import images from "../assets/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   const galleryImages = [
     {
-      url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+      url: images.CommercialProperty,
       alt: "Commercial Property Exterior",
     },
     {
-      url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
+      url: images.officeinterior,
       alt: "Shop Interior",
     },
     {
-      url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
-      alt: "Building View",
-    },
-
-    {
-      url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+      url: images.img1,
       alt: "Building View",
     },
     {
-      url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
+      url: images.img3,
+      alt: "Building View",
+    },
+    {
+      url: images.img3,
       alt: "Commercial Complex",
     },
     {
-      url: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800",
+      url: images.img4,
       alt: "Retail Space",
     },
     {
-      url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800",
+      url: images.img1,
       alt: "Modern Office Space",
     },
   ];
@@ -56,27 +66,42 @@ const Gallery = () => {
     );
   };
 
-  // Dynamic spanning pattern for creative layout
+  // Dynamic spanning pattern - Different for mobile and desktop
   const getSpanClasses = (idx) => {
-    const patterns = [
-      "col-span-2 row-span-2", // Large square
+    // Mobile patterns (simpler, 2 columns)
+    const mobilePatterns = [
+      "col-span-2 row-span-2", // Large
       "col-span-1 row-span-1", // Small
-      "col-span-1 row-span-2", // Wide
+      "col-span-1 row-span-1", // Small
       "col-span-2 row-span-1", // Wide
+      "col-span-1 row-span-2", // Tall
       "col-span-1 row-span-1", // Small
-      "col-span-2 row-span-2", // Large square
-      "col-span-4 row-span-1", // Tall
+      "col-span-2 row-span-2", // Large
     ];
-    return patterns[idx % patterns.length];
+
+    // Desktop patterns (complex, 6 columns)
+    const desktopPatterns = [
+      "md:col-span-2 md:row-span-2", // Large square
+      "md:col-span-1 md:row-span-1", // Small
+      "md:col-span-1 md:row-span-2", // Tall
+      "md:col-span-2 md:row-span-1", // Wide
+      "md:col-span-1 md:row-span-1", // Small
+      "md:col-span-2 md:row-span-2", // Large square
+      "md:col-span-4 md:row-span-1", // Extra wide
+    ];
+
+    return `${mobilePatterns[idx % mobilePatterns.length]} ${
+      desktopPatterns[idx % desktopPatterns.length]
+    }`;
   };
 
   return (
     <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in relative">
-          <div className="absolute inset-0 -top-30 flex items-center justify-center pointer-events-none">
-            <span className="text-5xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10">
+        <div className="text-center mb-12 relative" data-aos="fade-up">
+          <div className="absolute inset-0 -top-40  flex items-center justify-center pointer-events-none overflow-hidden">
+            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 whitespace-nowrap">
               Project Gallery
             </span>
           </div>
@@ -90,18 +115,17 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Creative Masonry Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 auto-rows-[180px] sm:auto-rows-[200px] md:auto-rows-[220px]">
+        {/* Creative Masonry Grid - Fixed for Mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px] lg:auto-rows-[220px]">
           {galleryImages.map((image, index) => (
             <div
               key={index}
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
               className={`${getSpanClasses(
                 index
-              )} group relative overflow-hidden cursor-pointer rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:z-10`}
+              )} group relative overflow-hidden cursor-pointer rounded-md sm:rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:z-10`}
               onClick={() => openLightbox(index)}
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              }}
             >
               {/* Image */}
               <img
@@ -115,19 +139,19 @@ const Gallery = () => {
 
               {/* Text Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white font-bold text-xs sm:text-sm md:text-base drop-shadow-lg">
+                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 lg:p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base drop-shadow-lg line-clamp-1">
                     {image.alt}
                   </p>
-                  <p className="text-white/90 text-[10px] sm:text-xs md:text-sm mt-1 flex items-center gap-1">
-                    <span className="inline-block w-1 h-1 bg-white rounded-full"></span>
+                  <p className="text-white/90 text-[8px] sm:text-[10px] md:text-xs lg:text-sm mt-0.5 sm:mt-1 flex items-center gap-1">
+                    <span className="inline-block w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full"></span>
                     Click to expand
                   </p>
                 </div>
               </div>
 
               {/* Corner Accent */}
-              <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-white/0 group-hover:border-white/60 transition-all duration-300 rounded-tr-lg"></div>
+              <div className="absolute top-1 right-1 sm:top-2 sm:right-2 w-6 h-6 sm:w-8 sm:h-8 border-t-2 border-r-2 border-white/0 group-hover:border-white/60 transition-all duration-300 rounded-tr-lg"></div>
             </div>
           ))}
         </div>
@@ -135,37 +159,37 @@ const Gallery = () => {
 
       {/* Lightbox */}
       {lightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 sm:p-4 animate-fade-in">
           {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors z-10"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors z-10"
             aria-label="Close lightbox"
           >
-            <X className="w-6 h-6 lg:w-8 lg:h-8" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
           </button>
 
           {/* Previous Button */}
           <button
             onClick={prevImage}
-            className="absolute left-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="absolute left-2 sm:left-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Previous image"
           >
-            <ChevronLeft className="w-8 h-8 lg:w-10 lg:h-10" />
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
           </button>
 
           {/* Image Display */}
-          <div className="max-w-6xl w-full">
+          <div className="max-w-6xl w-full px-8 sm:px-12 md:px-16">
             <img
               src={galleryImages[currentImageIndex].url}
               alt={galleryImages[currentImageIndex].alt}
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              className="w-full h-auto max-h-[70vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain rounded-lg"
             />
-            <div className="text-center mt-4">
-              <p className="text-white text-sm lg:text-base font-semibold">
+            <div className="text-center mt-3 sm:mt-4">
+              <p className="text-white text-xs sm:text-sm lg:text-base font-semibold">
                 {galleryImages[currentImageIndex].alt}
               </p>
-              <p className="text-white/60 text-xs lg:text-sm mt-1">
+              <p className="text-white/60 text-[10px] sm:text-xs lg:text-sm mt-1">
                 {currentImageIndex + 1} / {galleryImages.length}
               </p>
             </div>
@@ -174,26 +198,15 @@ const Gallery = () => {
           {/* Next Button */}
           <button
             onClick={nextImage}
-            className="absolute right-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="absolute right-2 sm:right-4 text-white p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Next image"
           >
-            <ChevronRight className="w-8 h-8 lg:w-10 lg:h-10" />
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
           </button>
         </div>
       )}
 
       <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -205,6 +218,13 @@ const Gallery = () => {
 
         .animate-fade-in {
           animation: fadeIn 0.6s ease-out;
+        }
+
+        .line-clamp-1 {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </section>
