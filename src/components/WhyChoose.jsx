@@ -1,6 +1,7 @@
 import React from "react";
 import { CheckCircle, Shield } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import images from "../assets/image";
 
 const WhyChoose = () => {
   useScrollAnimation();
@@ -89,7 +90,7 @@ const WhyChoose = () => {
           <div className="relative z-10">
             <div className="inline-flex items-center justify-center w-20 h-20 lg:w-24 lg:h-24 bg-white/10 backdrop-blur-sm rounded-full mb-6 border-2 border-white/30">
               <img
-                src="src\assets\rera.png" // change path as needed
+                src={images.rera} // change path as needed
                 alt="Security"
                 className="w-full h-full lg:w-full lg:h-full rounded-full object-contain"
               />

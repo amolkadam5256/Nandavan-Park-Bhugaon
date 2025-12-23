@@ -1,5 +1,6 @@
 import React from "react";
 import bgVideo from "../assets/bgVideo.mp4";
+import images from "../assets/image";
 
 const Hero = () => {
   // Toggle between image and video
@@ -35,7 +36,7 @@ const Hero = () => {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source src={videoSource} type="video/mp4" />
+              <source src={images.bgVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-600/50"></div>
@@ -44,7 +45,7 @@ const Hero = () => {
           // Image Background with Overlay
           <>
             <img
-              src={imageSource}
+              src={images.bg}
               alt="Commercial Property"
               className="w-full h-full object-cover"
             />
