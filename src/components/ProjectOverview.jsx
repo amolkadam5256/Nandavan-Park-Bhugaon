@@ -1,0 +1,94 @@
+import React from "react";
+import { MapPin } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
+const ProjectOverview = () => {
+  useScrollAnimation();
+
+  const features = [
+    { label: "Shop Sizes", value: "144 - 340 sq.ft." },
+    { label: "Property Type", value: "Commercial Shops" },
+    { label: "Status", value: "Ready to Move" },
+    { label: "Location", value: "Bhugaon, Pune" },
+    { label: "RERA Number", value: "A061262500523" },
+    { label: "Starting Price", value: "₹39.09 Lakhs" },
+  ];
+
+  const landmarks = [
+    { name: "Chandni Chowk", distance: "10 mins" },
+    { name: "Kothrud", distance: "15 mins" },
+    { name: "Bavdhan", distance: "10 mins" },
+    { name: "Bhugaon Main Chowk", distance: "2 mins" },
+  ];
+
+  return (
+    <section className="py-12 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 lg:mb-16 scroll-animate relative">
+          <div className="absolute inset-0 -top-52 flex items-center justify-center pointer-events-none">
+            <span className="text-5xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10">
+              Project Overview
+            </span>
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Project Overview
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Nandavan Park brings you thoughtfully designed commercial shops in
+              Bhugaon, a location that connects you with prime Pune suburbs.
+              Perfect for retail, food joints, clinics, and offices seeking high
+              footfall and easy access.
+            </p>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-12 lg:mb-16">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className={`bg-white  p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-2 scroll-animate scroll-animate-delay-${
+                (index % 4) + 1
+              }`}
+            >
+              <div className="text-sm lg:text-base text-gray-600 mb-2">
+                {feature.label}
+              </div>
+              <div className="text-xl lg:text-2xl font-bold text-blue-600">
+                {feature.value}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Nearby Landmarks */}
+        <div className="bg-blue-50 p-6 lg:p-12 scroll-animate">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 lg:mb-8 text-center">
+            Nearby Landmarks
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {landmarks.map((landmark, index) => (
+              <div
+                key={index}
+                className={`bg-white  p-4 lg:p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 scroll-animate scroll-animate-delay-${
+                  index + 1
+                }`}
+              >
+                <MapPin className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+                <div className="font-bold text-gray-900 mb-2">
+                  {landmark.name}
+                </div>
+                <div className="text-blue-600 font-semibold">
+                  {landmark.distance}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectOverview;
