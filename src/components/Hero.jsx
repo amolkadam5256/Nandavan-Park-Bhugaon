@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import images from "../assets/image";
 
 const Hero = () => {
   // Initialize AOS with infinite animation on scroll
@@ -36,10 +37,7 @@ const Hero = () => {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-modern-city-with-skyscrapers-50649-large.mp4"
-                type="video/mp4"
-              />
+              <source src={images.bgVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-600/50"></div>
