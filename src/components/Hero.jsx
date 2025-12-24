@@ -14,13 +14,13 @@ const Hero = () => {
 
   const useVideo = true;
 
-  const highlights = [
+   const highlights = [
     { value: "144-340", label: "Sq.ft. Shops" },
+    { value: "3,928", label: "Sq.ft. Office Space" },
     { value: "₹39L+", label: "Starting Price" },
     { value: "Highway", label: "Touch Property" },
     { value: "High ROI", label: "Prime Location" },
   ];
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden mt-0">
       {/* Background */}
@@ -79,10 +79,25 @@ const Hero = () => {
           READY TO MOVE | COMMERCIAL PROPERTY
         </div>
 
-        {/* Heading */}
+        {/* Project Name - New Addition */}
         <h1
           className="
-            text-4xl sm:text-4xl lg:text-6xl
+            text-3xl sm:text-4xl lg:text-5xl
+            font-extrabold
+            text-yellow-400
+            mb-4
+            tracking-wide
+            drop-shadow-lg
+          "
+          data-aos="fade-up"
+        >
+          Nandavan Park Bhugaon
+        </h1>
+
+        {/* Heading */}
+        <h2
+          className="
+            text-3xl sm:text-4xl lg:text-5xl
             font-bold
             text-gray-900 dark:text-white
             mb-4 lg:mb-6
@@ -93,7 +108,7 @@ const Hero = () => {
           Your Next Business
           <br />
           <span className="text-yellow-400">Address</span>
-        </h1>
+        </h2>
 
         {/* Subtitle */}
         <p
@@ -124,7 +139,7 @@ const Hero = () => {
         </p>
 
         {/* Highlights */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-8 lg:mb-12 max-w-4xl mx-auto">
           {highlights.map((item, index) => (
             <div
               key={index}
@@ -138,7 +153,7 @@ const Hero = () => {
                 transform hover:scale-105
               "
               data-aos="zoom-in"
-              data-aos-delay={500 + index * 100}
+              data-aos-delay={500 + index * 50}
             >
               <div className="text-2xl font-bold text-yellow-400 mb-2">
                 {item.value}

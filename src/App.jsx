@@ -1,6 +1,7 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { useTheme } from "../contexts/ThemeContext"; // ← ADD THIS
+import { useTheme } from "../contexts/ThemeContext";
+import { useLanguage } from "../contexts/LanguageContext"; // ← ADD THIS
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import ProjectOverview from "./components/ProjectOverview";
@@ -10,17 +11,23 @@ import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import DarkModeToggle from "./components/DarkModeToggle";
+import LanguageSelector from "./components/LanguageSelector"; // ← ADD THIS
 import "./App.css";
-// import SnowfallComponent from "./components/SnowfallComponent";
 
 const App = () => {
-  const { isDark, toggleDarkMode } = useTheme(); // ← USE THEME HOOK
+  const { isDark, toggleDarkMode } = useTheme();
+  const { language } = useLanguage(); // ← GET CURRENT LANGUAGE
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Navigation */}
       <Navigation />
-      {/* <SnowfallComponent /> */}
+
+      {/* Language Selector - Fixed Position (Top Right) */}
+      <div className="fixed top-20 right-4 z-50">
+        <LanguageSelector />
+      </div>
+
       {/* Dark Mode Toggle - Fixed Position */}
       <div className="fixed top-1/2 right-0 z-50 transform -translate-y-1/2">
         <DarkModeToggle isDark={isDark} toggleDarkMode={toggleDarkMode} />
@@ -49,7 +56,7 @@ const App = () => {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/919752971177"
+        href="https://wa.me/918830567738"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 w-14 h-14 lg:w-16 lg:h-16 flex items-center justify-center shadow-2xl z-50 transition-transform duration-300 hover:scale-110 rounded-full animate-pulse"

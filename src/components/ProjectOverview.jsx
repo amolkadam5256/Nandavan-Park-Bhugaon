@@ -22,11 +22,14 @@ const ProjectOverview = () => {
   ];
 
   const landmarks = [
-    { name: "Chandni Chowk", distance: "10 mins" },
-    { name: "Kothrud", distance: "15 mins" },
-    { name: "Bavdhan", distance: "10 mins" },
     { name: "Bhugaon Main Chowk", distance: "2 mins" },
+    { name: "Chandni Chowk", distance: "10 mins" },
+    { name: "Bavdhan", distance: "10 mins" },
+    { name: "Kothrud", distance: "15 mins" },
+    { name: "Karve Nagar", distance: "20 mins" },
+    { name: "Hinjawadi Phase 1", distance: "25 mins" },
   ];
+
 
   return (
     <section className="py-12 lg:py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black">
@@ -81,7 +84,7 @@ const ProjectOverview = () => {
 
         {/* Nearby Landmarks */}
         <div
-          className="bg-blue-50 dark:bg-white/5 p-6 lg:p-12"
+          className="bg-blue-50 dark:bg-white/5 p-6 lg:p-12  rounded-lg"
           data-aos="fade-up"
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8 text-center">

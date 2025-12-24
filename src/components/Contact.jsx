@@ -74,10 +74,31 @@ const Contact = () => {
             {/* Quick Location Stats - STEP 7: Add dark mode */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {[
-                { place: "Chandni Chowk", time: "10 mins" },
-                { place: "Kothrud", time: "15 mins" },
-                { place: "Bavdhan", time: "10 mins" },
-                { place: "Main Chowk", time: "2 mins" },
+                {
+                  place: "Chandni Chowk",
+                  time: "10 mins",
+                },
+                {
+                  place: "Kothrud",
+                  time: "15 mins",
+                },
+                {
+                  place: "Bavdhan",
+                  time: "10 mins",
+                },
+                {
+                  place: "Main Chowk",
+                  time: "2 mins",
+                },
+                {
+                  place: "Karve Nagar",
+                  time: "20 mins",
+                },
+                {
+                  place: "Hinjawadi Phase 1",
+                  time: "25 mins",
+                },
+
               ].map((location, index) => (
                 <div
                   key={index}

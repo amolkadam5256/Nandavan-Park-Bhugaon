@@ -2,14 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./App.css";
 import App from "./App.jsx";
-import { ThemeProvider } from "../contexts/ThemeContext.jsx"; // ← ADD THIS
+import { ThemeProvider } from "../contexts/ThemeContext.jsx";
+import { LanguageProvider } from "../contexts/LanguageContext.jsx"; // ← ADD THIS
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
-      {" "}
-      {/* ← WRAP APP WITH PROVIDER */}
-      <App />
-    </ThemeProvider>
+    <LanguageProvider> {/* ← ADD LANGUAGE PROVIDER */}
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </LanguageProvider>
   </StrictMode>
 );

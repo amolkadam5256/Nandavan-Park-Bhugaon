@@ -23,11 +23,11 @@ const Navigation = () => {
           <div className="hidden md:flex flex-col items-start space-y-1">
             {/* Phone Number */}
             <a
-              href="tel:+919752971177"
+              href="tel:+918830567738"
               className="flex items-center space-x-1 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="text-sm font-semibold">+91 97529 71177</span>
+              <span className="text-sm font-semibold">+91 88305 67738</span>
             </a>
 
             {/* RERA Number */}
