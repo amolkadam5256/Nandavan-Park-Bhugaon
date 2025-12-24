@@ -11,7 +11,7 @@ import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import DarkModeToggle from "./components/DarkModeToggle";
-import LanguageSelector from "./components/LanguageSelector"; // ← ADD THIS
+// import LanguageSelector from "./components/LanguageSelector"; // ← ADD THIS
 import "./App.css";
 
 const App = () => {
