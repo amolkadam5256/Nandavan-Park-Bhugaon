@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { translateText } from "../src/utils/translate";
+import { translateText } from "../utils/translate";
 
 const LanguageContext = createContext();
 

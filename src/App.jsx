@@ -1,7 +1,7 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { useTheme } from "../contexts/ThemeContext";
-import { useLanguage } from "../contexts/LanguageContext"; // ← ADD THIS
+import { useTheme } from "./contexts/ThemeContext";
+import { useLanguage } from "./contexts/LanguageContext"; // ← ADD THIS
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import ProjectOverview from "./components/ProjectOverview";
@@ -24,9 +24,9 @@ const App = () => {
       <Navigation />
 
       {/* Language Selector - Fixed Position (Top Right) */}
-      <div className="fixed top-20 right-4 z-50">
+      {/* <div className="fixed top-20 right-4 z-50">
         <LanguageSelector />
-      </div>
+      </div> */}
 
       {/* Dark Mode Toggle - Fixed Position */}
       <div className="fixed top-1/2 right-0 z-50 transform -translate-y-1/2">

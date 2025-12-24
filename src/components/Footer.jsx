@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../../contexts/ThemeContext"; // ← STEP 1: Import useTheme
+import { useTheme } from "../contexts/ThemeContext"; // ← STEP 1: Import useTheme
 
 const Footer = () => {
   const { isDark } = useTheme(); // ← STEP 2: Get theme state

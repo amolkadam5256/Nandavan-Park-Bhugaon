@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { useTheme } from "../../contexts/ThemeContext"; // ← STEP 1: Import useTheme
+import { useTheme } from "../contexts/ThemeContext"; // ← STEP 1: Import useTheme
 
 const Contact = () => {
   const { isDark } = useTheme(); // ← STEP 2: Get theme state
