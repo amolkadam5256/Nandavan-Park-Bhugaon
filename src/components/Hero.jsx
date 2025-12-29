@@ -14,7 +14,7 @@ const Hero = () => {
 
   const useVideo = true;
 
-   const highlights = [
+  const highlights = [
     { value: "217-341", label: "Sq.ft. Shops" },
     { value: "3,928", label: "Sq.ft. Office Space" },
     { value: "₹52L+", label: "Starting Price" },
