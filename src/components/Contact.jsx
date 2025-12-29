@@ -95,7 +95,7 @@ const Contact = () => {
                   time: "20 mins",
                 },
                 {
-                  place: "Hinjawadi Phase 1",
+                  place: "Hinjawadi Phase 3",
                   time: "25 mins",
                 },
 

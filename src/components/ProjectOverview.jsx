@@ -13,12 +13,12 @@ const ProjectOverview = () => {
   }, []);
 
   const features = [
-    { label: "Shop Sizes", value: "144 - 340 sq.ft." },
+    { label: "Shop Sizes", value: "217 - 341 sq.ft." },
     { label: "Property Type", value: "Commercial Shops" },
     { label: "Status", value: "Ready to Move" },
     { label: "Location", value: "Bhugaon, Pune" },
     { label: "RERA Number", value: "A061262500523" },
-    { label: "Starting Price", value: "₹39.09 Lakhs" },
+    { label: "Starting Price", value: "₹52.00 Lakhs" },
   ];
 
   const landmarks = [
@@ -27,7 +27,7 @@ const ProjectOverview = () => {
     { name: "Bavdhan", distance: "10 mins" },
     { name: "Kothrud", distance: "15 mins" },
     { name: "Karve Nagar", distance: "20 mins" },
-    { name: "Hinjawadi Phase 1", distance: "25 mins" },
+    { name: "Hinjawadi Phase 3", distance: "25 mins" },
   ];
 
 
