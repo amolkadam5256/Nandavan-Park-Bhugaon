@@ -170,7 +170,7 @@ const Contact = () => {
                     </p>
                   </div>
                   <a
-                    href="https://share.google/6rLOvmQoVamf7YyYC"
+                    href="https://maps.app.goo.gl/MgVCRSnEDoQCb4yS9?g_st=awb"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-blue-600 dark:bg-blue-500 
