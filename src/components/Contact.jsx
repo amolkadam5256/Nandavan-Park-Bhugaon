@@ -98,7 +98,6 @@ const Contact = () => {
                   place: "Hinjawadi Phase 3",
                   time: "25 mins",
                 },
-
               ].map((location, index) => (
                 <div
                   key={index}
@@ -171,7 +170,7 @@ const Contact = () => {
                     </p>
                   </div>
                   <a
-                    href="https://www.google.com/maps/dir//18.4635,73.7443"
+                    href="https://share.google/6rLOvmQoVamf7YyYC"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-blue-600 dark:bg-blue-500 
