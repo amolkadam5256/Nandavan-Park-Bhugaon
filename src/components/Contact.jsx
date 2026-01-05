@@ -447,7 +447,7 @@ const Contact = () => {
                             text-sm lg:text-base leading-relaxed 
                             transition-colors"
                 >
-                  Mon–Sat | 9:00 AM – 7:00 PM
+                  Mon–Sun | 9:30 AM - 7:00 PM
                 </p>
               </div>
             </div>
