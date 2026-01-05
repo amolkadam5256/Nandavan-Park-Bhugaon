@@ -88,7 +88,7 @@ const Amenities = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16 relative">
-          <div
+          {/* <div
             className="absolute inset-0 -top-40 flex items-center justify-center pointer-events-none overflow-hidden"
             data-aos="fade-up"
             data-aos-delay="0"
@@ -96,7 +96,7 @@ const Amenities = () => {
             <span className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black text-gray-900/10 dark:text-white/20 whitespace-nowrap">
               Premium Amenities
             </span>
-          </div>
+          </div> */}
           <div className="relative z-10">
             <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"

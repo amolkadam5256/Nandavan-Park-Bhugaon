@@ -16,12 +16,11 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 relative">
-          <div
+          {/* <div
             className="absolute inset-0 -top-40 flex items-center justify-center pointer-events-none"
             data-aos="fade-up"
             data-aos-delay="0"
           >
-            {/* STEP 4: Add dark mode to background text */}
             <span
               className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl font-black 
                            text-gray-900/10 dark:text-white/10 
@@ -29,7 +28,7 @@ const Contact = () => {
             >
               Get In Touch
             </span>
-          </div>
+          </div> */}
           <div className="relative z-10">
             {/* STEP 5: Add dark mode to heading */}
             <h2
