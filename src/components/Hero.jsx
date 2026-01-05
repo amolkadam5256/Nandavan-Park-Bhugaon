@@ -1,17 +1,7 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
 import images from "../assets/image";
 
 const Hero = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
-  }, []);
-
   const useVideo = true;
 
   const highlights = [

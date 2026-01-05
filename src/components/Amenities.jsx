@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import images from "../assets/image";
 import {
   Building2,
@@ -14,31 +14,6 @@ import {
 } from "lucide-react";
 
 const Amenities = () => {
-  useEffect(() => {
-    // Initialize AOS
-    const initAOS = async () => {
-      const AOS = await import(
-        "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-      );
-      AOS.init({
-        duration: 1000,
-        once: false,
-        mirror: true,
-      });
-    };
-    initAOS();
-
-    // Load AOS CSS
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css";
-    document.head.appendChild(link);
-
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, []);
-
   const amenities = [
     {
       icon: <Building2 className="w-8 h-8 lg:w-10 lg:h-10" />,

@@ -1,18 +1,9 @@
-import React, { useEffect } from "react";
+// AOS moved to App.jsx
+import React from "react";
 import { CheckCircle } from "lucide-react";
 import images from "../assets/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const WhyChoose = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
-  }, []);
-
   const reasons = [
     "Prime location in Bhugaon with excellent connectivity",
     "High footfall zone ensuring maximum business visibility",

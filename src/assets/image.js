@@ -26,7 +26,7 @@ import CommercialProperty from "./CommercialProperty.png";
 import firesafety from "./firesafety.png";
 // RERA
 import rera from "./rera.png";
-import contemporarycommercial from './contemporarycommercial.webp';
+import contemporarycommercial from "./contemporarycommercial.webp";
 
 const images = {
   // Backgrounds

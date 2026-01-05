@@ -1,34 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import images from "../assets/image";
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    // Initialize AOS
-    const initAOS = async () => {
-      const AOS = await import(
-        "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-      );
-      AOS.init({
-        duration: 1000,
-        once: false,
-        mirror: true,
-      });
-    };
-    initAOS();
-
-    // Load AOS CSS
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css";
-    document.head.appendChild(link);
-
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, []);
 
   const galleryImages = [
     {
@@ -170,7 +145,6 @@ const Gallery = () => {
           ))}
         </div>
       </div>
-
       {/* Lightbox */}
       {lightboxOpen && (
         <div className="fixed inset-0 z-50 bg-black/95 dark:bg-black/98 flex items-center justify-center p-2 sm:p-4 animate-fade-in">
@@ -219,28 +193,6 @@ const Gallery = () => {
           </button>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        .line-clamp-1 {
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
     </section>
   );
 };

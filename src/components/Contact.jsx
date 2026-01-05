@@ -1,20 +1,9 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext"; // ← STEP 1: Import useTheme
 
 const Contact = () => {
   const { isDark } = useTheme(); // ← STEP 2: Get theme state
-
-  // Initialize AOS with infinite animation on scroll
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
-  }, []);
 
   return (
     // STEP 3: Add dark mode to section background

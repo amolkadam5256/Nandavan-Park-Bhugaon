@@ -1,17 +1,8 @@
-import React, { useEffect } from "react";
+// AOS moved to App.jsx
+import React from "react";
 import { MapPin } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const ProjectOverview = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
-  }, []);
-
   const features = [
     { label: "Shop Sizes", value: "217 - 341 sq.ft." },
     { label: "Property Type", value: "Commercial Shops" },
@@ -29,7 +20,6 @@ const ProjectOverview = () => {
     { name: "Karve Nagar", distance: "20 mins" },
     { name: "Hinjawadi Phase 3", distance: "25 mins" },
   ];
-
 
   return (
     <section className="py-12 lg:py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black">
